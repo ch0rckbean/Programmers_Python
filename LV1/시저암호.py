@@ -9,18 +9,14 @@ def solution(s, n):
     answer = ''
     for i in s:
         # 대문자일 때
-        if i.isupper():
-            # if i>='A' and i<='Z'
-
+        if i.isupper():  # if i>='A' and i<='Z'
             # indexErr나므로 +n 여기서 해야 함
             idx = strArr2.find(i)+n
             answer += strArr2[idx % 26]
 
         # 소문자일 때
-        elif i.islower():
-            # elif i>='a' and i<='z'
+        elif i.islower():  # elif i>='a' and i<='z'
             idx = strArr1.find(i)+n
-            print(idx, 'idx')
             # answer += strArr1[idx % 26+n]
             answer += strArr1[idx % 26]
 
