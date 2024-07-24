@@ -1,31 +1,24 @@
-def binary(n, arr):
-    arr3 = []
-    for i in arr:
-        tmp = format(i, 'b')
-        if len(tmp) != n:  # n자리수 아니면 0 넣기
-            tmp = '0'*(n-len(tmp)) + str(tmp)
-        arr3.append(tmp)
-    print('arr: ', arr3)
-    return arr3
-
-
 def solution(n, arr1, arr2):
     answer = []
-    tmpArr1 = []
+    tmpArr = []
     tmpArr2 = []
-    tmpArr3 = []
 
-    tmpArr1 = (binary(n, arr1))
-    tmpArr2 = (binary(n, arr2))
+    # 2진수 or 연산
+    for i in range(len(arr1)):
+        tmpArr.append(arr1[i] | arr2[i])
 
-    for i in range(len(tmpArr1)):
-        tmpArr3.append((int(tmpArr1[i]) or int(tmpArr2[i])))
+    # 2진수 변경
+    for tmp in tmpArr:
+        tmp = format(tmp, 'b')
+        if len(tmp) != n:  # n자리수 아니면 0 넣기
+            tmp = '0'*(n-len(tmp)) + str(tmp)
+        tmpArr2.append(tmp)
 
-    for j in tmpArr3:
-        j = str(j)
-        j.replace('1', '#')
-        j.replace('0', ' ')
-        answer.append(j)
+    # #, 0 변경
+    for tmp2 in tmpArr2:
+        answer.append(tmp2.replace('1', '#').replace('0', ' '))
+
+    print(tmpArr, tmpArr2)
     print(answer)
     return answer
 
