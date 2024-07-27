@@ -7,14 +7,14 @@ def solution(name, yearning, photo):
         book[name[i]] = yearning[i]
     print(book)
 
-    for i in photo:
+    for i in photo:  # 그리움 점수 합산
         for j in i:
-            if j in book.keys():
+            if j in book.keys():  # 그리우면
                 score += book[j]
-            else:
+            else:  # 안 그리우면
                 score += 0
         answer.append(score)
-        score = 0
+        score = 0  # 초기화
 
     print(answer)
     return answer
