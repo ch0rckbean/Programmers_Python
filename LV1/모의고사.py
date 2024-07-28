@@ -18,6 +18,7 @@ def solution(answers):
         if (answer[i] == max(answer)):
             result.append(i+1)
     result = sorted(result)
+
     print(result)
     return result
 
