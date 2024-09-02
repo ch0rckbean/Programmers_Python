@@ -4,10 +4,8 @@ def solution(n, m, section):
 
     for start in section:
         if start > curPos:
-            answer += 1
+            answer += 1  # 페인트 횟수
             curPos = start+m-1
-            print(curPos)
-    print(answer)
     return answer
 
 
