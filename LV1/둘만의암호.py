@@ -13,7 +13,6 @@ def solution(s, skip, index):
         s[i] = lower[(idx+index) % len(lower)]
         answer += s[i]
     print(answer, s)
-
     return answer
 
 
