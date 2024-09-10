@@ -6,14 +6,13 @@ def solution(numbers, hand):
     curR = 12
     left = [1, 4, 7]
     right = [3, 6, 9]
-    middle = [2, 5, 8, 0]
 
     # 번호별 좌표
     pos = {
         1: (0, 0), 2: (0, 1), 3: (0, 2),
         4: (1, 0), 5: (1, 1), 6: (1, 2),
         7: (2, 0), 8: (2, 1), 9: (2, 2),
-        '*': (3, 0), 0: (3, 1), '#': (3, 2)
+        10: (3, 0), 0: (3, 1), 12: (3, 2)
     }
 
     for num in numbers:
@@ -23,13 +22,7 @@ def solution(numbers, hand):
         elif num in right:
             touch += 'R'
             curR = num
-        else:
-            # 0일 때 딕셔너리 기준 치환
-            if curL == 0:
-                curL == 11
-            elif curR == 0:
-                curR == 11
-
+        else:  # 가운데 좌판일 때
             # 딕셔너리에서 가져온 좌표
             leftPos = pos[curL]
             rightPos = pos[curR]
@@ -46,7 +39,14 @@ def solution(numbers, hand):
                 touch += 'R'
                 curR = num
             elif distL == distR:
-                touch += hand[:1].upper()
+                # 현재 손 위치 갱신 코드 필요
+                if hand == 'right':
+                    touch += 'R'
+                    curR = num
+                elif hand == 'left':
+                    touch += 'L'
+                    curL = num
+    answer = touch
     print(answer, touch)
     return answer
 
